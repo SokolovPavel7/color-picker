@@ -1,0 +1,21 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif; /*ссылки на шрифты в html*/
+  height: 100vh; /*чтобы занятиь все пространство по вертикали*/
+  display: flex;
+}
+
+.col {
+  border: 1px solid #000;
+  flex: 1; /*чтобы наши 5 блоков расятнулись по всей ширине экрана*/
+  background: #ccc;
+  display: flex;
+  flex-direction: column; /*flex-направление: столбец*/
+  justify-content: space-around; /*выравнивание содержимого: пространство вокруг*/
+  align-items: center; /*выравнивание элементов: по центру*/
+}
