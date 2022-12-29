@@ -13,9 +13,36 @@ body {
 .col {
   border: 1px solid #000;
   flex: 1; /*чтобы наши 5 блоков расятнулись по всей ширине экрана*/
-  background: #ccc;
+  background: Gainsboro;
   display: flex;
   flex-direction: column; /*flex-направление: столбец*/
   justify-content: space-around; /*выравнивание содержимого: пространство вокруг*/
   align-items: center; /*выравнивание элементов: по центру*/
+}
+
+.col h2 {
+  padding: 10px;
+  color: DimGray;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+.col h2:hover {
+  background: rgba(169, 169, 169, 0.2);
+  cursor: pointer;
+}
+
+.col button {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  color: DimGray;
+  padding: 10px;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+.col button:hover {
+  background: rgba(169, 169, 169, 0.2);
+  cursor: pointer;
 }
