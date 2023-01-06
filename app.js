@@ -18,6 +18,8 @@ document.addEventListener('click', (event) => {
 
     node.classList.toggle('fa-lock-open');
     node.classList.toggle('fa-lock');
+  } else if (type === 'copy') {
+    copyToClickboard(event.target.textContent);
   }
 });
 
@@ -31,7 +33,13 @@ function generateRandomColor() {
   return '#' + color;
 }
 
+function copyToClickboard(text) {
+  return navigator.clipboard.writeText(text);
+}
+
 function setRandomColors() {
+  const colors = [];
+
   cols.forEach((col) => {
     const isLocked = col.querySelector('i').classList.contains('fa-lock');
     const text = col.querySelector('h2');
@@ -39,8 +47,11 @@ function setRandomColors() {
     const color = chroma.random();
 
     if (isLocked) {
+      colors.push(text.textContent);
       return;
     }
+
+    colors.push(color);
 
     text.textContent = color;
     col.style.background = color;
@@ -48,11 +59,21 @@ function setRandomColors() {
     setTextColor(text, color);
     setTextColor(button, color);
   });
+
+  updateColorsHash(colors);
 }
 
 function setTextColor(text, color) {
   const luminance = chroma(color).luminance();
   text.style.color = luminance > 0.5 ? 'black' : 'white';
+}
+
+function updateColorsHash(colors) {
+  document.location.hash = colors
+    .map((col) => {
+      return col.toString().substring(1);
+    })
+    .join('-');
 }
 
 setRandomColors();
